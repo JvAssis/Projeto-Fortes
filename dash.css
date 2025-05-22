@@ -1,0 +1,80 @@
+/* Estilo base para a barra lateral */
+.navBarra {
+    width: 60px;
+    height: 100%;
+    background-color: #333;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transition: width 0.3s ease-in-out;
+    overflow: hidden;
+}
+
+.navBarra:hover {
+    width: 250px; /* Largura expandida quando o mouse passa por cima */
+}
+
+/* Estilo dos itens do menu */
+.navBarMenu {
+    list-style-type: none;
+    padding: 0;
+}
+
+.navBarMenu li {
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+}
+
+.navBarMenu a {
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.navBarMenu a:hover {
+    background-color: #575757;
+}
+
+.navItem {
+    display: flex;
+    align-items: center;
+}
+
+/* Escondendo o texto no modo recolhido e mostrando os ícones */
+.navBarra {
+    width: 60px; /* Menu recolhido */
+}
+
+.navBarra:hover .navItem span {
+    display: inline; /* Mostrar o nome quando expandido */
+    
+}
+
+/* Escondendo o nome quando o menu está recolhido */
+.navItem span {
+    display: none; 
+    margin-left: 10px; /* Espaço entre o ícone e o texto */
+}
+
+/* Estilos para o ícone de perfil */
+#profileIcon {
+    margin-top: 10px;
+}
+
+/* Estilo para o botão de alternância do menu (se necessário) */
+.menu-toggle {
+    display: none; /* Esconder o botão de toggle por enquanto */
+}
+
+.menu-toggle .line {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 5px;
+}
+
