@@ -1,0 +1,1 @@
+Protótipo base para implementação da barra lateral no projeto
