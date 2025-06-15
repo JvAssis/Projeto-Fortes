@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Relatório de Evento e Resíduos</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="pi.css"/>
+</head>
+
+<body>
+  <div class="d-flex">
+    <!-- Sidebar -->
+    <div class="sidebar d-flex flex-column p-3">
+      <button id="menu-toggle" class="menu-toggle">
+        <i class="bi bi-list"></i>
+      </button>
+      <a href="dashboard.html" class="nav-link"><i class="bi bi-house-door me-2"></i> <span class="label">Menu</span></a>
+      <a href="#" class="nav-link"><i class="bi bi-truck me-2"></i> <span class="label">Entregas</span></a>
+      <a href="#" class="nav-link"><i class="bi bi-send me-2"></i> <span class="label">Pontos de coleta</span></a>
+      <a href="#" class="nav-link"><i class="bi bi-recycle me-2"></i> <span class="label">Residuos</span></a>
+      <a href="#" class="nav-link"><i class="bi bi-file-earmark-text me-2"></i> <span class="label">Relatórios</span></a>
+      <a href="#" class="nav-link"><i class="bi bi-envelope me-2"></i> <span class="label">Mensagens</span></a>
+      <a href="#" class="nav-link"><i class="bi bi-question-circle me-2"></i> <span class="label">Ajuda</span></a>
+    </div>
+
+    <!-- Conteúdo principal -->
+    <div class="flex-grow-1 p-4">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="titulo">Relatório de Evento e Resíduos</h1>
+        <div>
+          <span>Nome</span>
+          <button class="btn btn-outline-secondary btn-sm">Sair</button>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-md-3">
+          <label for="data-inicio">Ver por data de:</label>
+          <input type="date" id="data-inicio" class="form-control">
+        </div>
+        <div class="col-md-3">
+          <label for="data-fim">até:</label>
+          <input type="date" id="data-fim" class="form-control">
+        </div>
+        <div class="col-md-2 d-flex align-items-end">
+          <button class="btn btn-success w-100">Filtrar</button>
+        </div>
+        <div class="col-md-4">
+          <label for="pesquisa">Pesquisar por nome</label>
+          <input type="text" id="pesquisa" class="form-control" placeholder="Digite o nome">
+        </div>
+      </div>
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th><input type="checkbox"></th>
+            <th>Evento</th>
+            <th>Data</th>
+            <th>Horário</th>
+            <th>Contratante</th>
+            <th>Baixar Relatório</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><input type="checkbox"></td>
+            <td>Evento 1</td>
+            <td>25/08/2025</td>
+            <td>14:00</td>
+            <td>Contratante</td>
+            <td><a href="#">baixar arquivo</a></td>
+          </tr>
+          <tr>
+            <td><input type="checkbox"></td>
+            <td>Evento 2</td>
+            <td>30/08/2025</td>
+            <td>14:00</td>
+            <td>Contratante</td>
+            <td><a href="#">link</a></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="d-flex gap-2 mb-4">
+        <button class="btn btn-outline-success">Baixar relatório de todos eventos selecionados</button>
+       <button id="verResumoBtn" class="btn btn-outline-secondary">Ver resumo</button>
+      </div>
+
+      
+      <div class="mb-3">
+        <label for="tipoGrafico">Ver com Gráfico de</label>
+        <select id="tipoGrafico" class="form-select w-auto d-inline-block ms-2">
+          <option value="Pizza">Pizza</option>
+          <option value="Barra">Barras</option>
+        </select>
+      </div>
+
+      
+      <div class="grafico-pizza mb-3">
+        <canvas id="graficoPizza"></canvas>
+      </div>
+
+  
+      <div class="grafico-barra mb-3" style="display: none;">
+    <canvas id="graficoBarra" width="100" height="100"></canvas>
+    </div>
+
+
+      <!-- Resumo -->
+      <div class="resumo-box">
+  <p><strong>Total de Eventos:</strong> 4</p>
+  <p><strong>Total Peso de resíduos:</strong> 4kg</p>
+  <p><strong>Lixos Coletados:</strong> 3</p>
+  <p><strong>Lixos Reciclados:</strong> 4</p>
+  <button id="esconderResumoBtn" class="btn btn-outline-danger">Esconder resumo</button>
+</div>
+
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

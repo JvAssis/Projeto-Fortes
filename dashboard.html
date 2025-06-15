@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="pi.css" />
+</head>
+
+<body>
+  <div class="d-flex">
+    <!-- Sidebar -->
+    <div class="sidebar d-flex flex-column p-3">
+      <button id="menu-toggle" class="menu-toggle">
+        <i class="bi bi-list"></i>
+      </button>
+      <a href="dashboard.html" class="nav-link"><i class="bi bi-house-door me-2"></i> <span
+          class="label">Menu</span></a>
+      <a href="entregas.html" class="nav-link"><i class="bi bi-truck me-2"></i> <span class="label">Entregas</span></a>
+      <a href="#" class="nav-link"><i class="bi bi-send me-2"></i> <span class="label">Pontos de coleta</span></a>
+      <a href="#" class="nav-link"><i class="bi bi-recycle me-2"></i> <span class="label">Residuos</span></a>
+      <a href="index.html" class="nav-link"><i class="bi bi-file-earmark-text me-2"></i> <span
+          class="label">Relatórios</span></a>
+      <a href="#" class="nav-link"><i class="bi bi-envelope me-2"></i> <span class="label">Mensagens</span></a>
+      <a href="#" class="nav-link"><i class="bi bi-question-circle me-2"></i> <span class="label">Ajuda</span></a>
+    </div>
+
+    <!-- inicio Conteúdo principal -->
+    <div class="flex-grow-1 p-4">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="titulo">Dashboard</h1>
+        <div>
+          <span>Usuário</span>
+          <button class="btn btn-outline-secondary btn-sm">Sair</button>
+        </div>
+      </div>
+
+      <!-- cabeçalho pendencias  -->
+      <div class="pendencias mb-3">
+        <h2>Pendências</h2>
+        <div class="paragrafo-pendencias">
+          <p>eventos<span class="circulo-pendencias">1</span></p>
+          <p>Coleta<span class="circulo-pendencias">2</span></p>
+          <p>Relatórios<span class="circulo-pendencias">2</span></p>
+          <p>entregas<span class="circulo-pendencias">2</span></p>
+        </div>
+      </div>
+
+      <div class="botoes-cabecalho mb-4">
+      <button class="botao-cabecalho" onclick="window.location.href='index.html'">Relatórios</button>
+        <button class="botao-cabecalho">Enviar Mensagem</button>
+        <button class="botao-cabecalho">Tutorial para reciclagem</button>
+      </div>
+
+      <!-- inicio calendario -->
+      <div class="dashboard-flex">
+        <div class="calendario-container">
+          <div class="corpo-pagina">
+            <div class="header-calendario">
+              <button class="botao-calendario-paginacao" id="prev-mes">&lt;</button>
+              <span class="mes" id="mes-atual">Janeiro 2025</span>
+              <button class="botao-calendario-paginacao" id="prox-mes">&gt;</button>
+            </div>
+
+            <table class="table-calendario">
+              <thead>
+                <tr>
+                  <th>Dom</th>
+                  <th>Seg</th>
+                  <th>Ter</th>
+                  <th>Qua</th>
+                  <th>Qui</th>
+                  <th>Sex</th>
+                  <th>Sáb</th>
+                </tr>
+              </thead>
+              <tbody id="corpo-calendario">
+              </tbody>
+            </table>
+          </div>
+
+          <div class="botao-calendario mb-4">
+            <button class="">Ver eventos</button>
+            <button class="">Cadastrar residuos</button>
+          </div>
+
+        </div>
+        <!-- fim do calendario -->
+
+        <!-- bloco de notificação -->
+        <div class="notificacao-conteiner mb-4">
+          <h2>Notificações</h2>
+          <br>
+          <div class="sem-notificacao" style="display:none;">
+            Não há nenhuma atualização.
+          </div>
+          <div class="conteudo-notificacao1" style="display:'';">
+            <h5>Evento cancelado</h5>
+            <br>
+            <p>O evento X, que originalmente seria no dia 12 de junho, foi cancelado.
+              Muitas pessoas me perguntaram quando será o próximo evento, e ainda será decidido. Por favor, aguardem.
+            </p>
+            <button class="btn-fechar" onclick="esconderNotificacao(this)">&times;</button>
+          </div>
+
+          <div class="conteudo-notificacao2" style="display:'';">
+            <h5>Evento cadastrado</h5>
+            <br>
+            <p>Evento do dia 27 de Janeiro cadastrado com sucesso</p>
+            <button class="btn-fechar" onclick="esconderNotificacao(this)">&times;</button>
+
+          </div>
+        </div>
+
+
+
+        <!-- Scripts -->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="dashboard script.js"></script>
+</body>
+
+</html>
