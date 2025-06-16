@@ -13,7 +13,10 @@ body {
 .sidebar {
   background-color: #fdf7e1;
   width: 50px;
-  height: 1400px;
+  min-height: 100vh;
+  height: 1400%;
+  transition: width 0.3s;
+  position: relative;
 }
 
 .sidebar .nav-link {
@@ -251,6 +254,7 @@ canvas {
   display: block;
   opacity: 1;
 }
+
 /* ------------------  */
 
 
@@ -288,6 +292,7 @@ canvas {
   justify-content: space-between;
   width: 100%;
 }
+
 /* ------------------  */
 
 
@@ -379,6 +384,7 @@ td {
 th {
   background-color: #f2f2f2;
 }
+
 /* ------------------  */
 
 
@@ -455,6 +461,7 @@ th {
 .btn-fechar:hover {
   background: #eee;
 }
+
 /* ------------------  */
 
 
@@ -506,6 +513,7 @@ th {
 #read-all {
   margin-left: 48px;
 }
+
 /* ------------------  */
 
 
@@ -521,6 +529,7 @@ th {
 #afastar-entrega {
   margin-left: 90px;
 }
+
 /* ------------------  */
 
 
@@ -616,6 +625,7 @@ th {
   justify-content: space-evenly;
   white-space: nowrap;
 }
+
 /* ------------------  */
 
 
@@ -727,23 +737,26 @@ th {
 
 /* Estilos específicos para tabela e popup, sem alterar fontes, cores, h, p, etc */
 
-    .tabela-custom td {
-      padding: 16px 12px;
-      text-align: left;
-      font-size: 1rem;
-      border: none;
-    }
-    .tabela-custom th {
-      background: #fcf6e1;
-      color: #2b5141;
-      font-weight: 600;
-    }
-    .tabela-custom tbody tr:nth-child(even) {
-      background-color: #e3ecd6;
-    }
-    .tabela-custom tbody tr:nth-child(odd) {
-      background-color: #fcf6e1;
-    }
+.tabela-custom td {
+  padding: 16px 12px;
+  text-align: left;
+  font-size: 1rem;
+  border: none;
+}
+
+.tabela-custom th {
+  background: #fcf6e1;
+  color: #2b5141;
+  font-weight: 600;
+}
+
+.tabela-custom tbody tr:nth-child(even) {
+  background-color: #e3ecd6;
+}
+
+.tabela-custom tbody tr:nth-child(odd) {
+  background-color: #fcf6e1;
+}
 
 .btn-cadastrar {
   background: #e3ecd6;
@@ -757,7 +770,7 @@ th {
   transition: background 0.2s;
   box-shadow: none;
   margin-right: 12px;
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .btn-cadastrar:hover {
@@ -776,7 +789,7 @@ th {
   cursor: pointer;
   transition: background 0.2s;
   box-shadow: none;
-    margin-top: 20px;
+  margin-top: 20px;
 }
 
 .ver-mais-btn:hover {
@@ -798,7 +811,7 @@ th {
 }
 
 #confirmar-excluir:hover {
-  background: #e57373!important;
+  background: #e57373 !important;
   color: #fff;
 }
 
@@ -834,14 +847,15 @@ th {
   transition: background 0.2s, color 0.2s;
   box-shadow: none;
 }
+
 .excluir-btn:hover {
-  background: #e57373!important;
+  background: #e57373 !important;
   color: #fff;
 }
 
 
-    /* Popup */
-    .popup-bg {
+/* Popup */
+.popup-bg {
   display: none;
   position: fixed;
   z-index: 1000;
@@ -853,30 +867,35 @@ th {
   justify-content: center;
   align-items: center;
 }
+
 .popup-bg.active {
   display: flex;
 }
+
 .popup {
   background: #71a888;
   border-radius: 24px;
   padding: 40px 48px 32px 48px;
   min-width: 700px;
   max-width: 900px;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
   color: #2b5141;
   position: relative;
 }
+
 .popup-form {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 28px 32px;
-  align-items: end; /* Alinha todos os campos pela base */
+  align-items: end;
+  /* Alinha todos os campos pela base */
 }
 
-.popup-form > div {
+.popup-form>div {
   display: flex;
   flex-direction: column;
-  justify-content: flex-end; /* Garante alinhamento dos inputs */
+  justify-content: flex-end;
+  /* Garante alinhamento dos inputs */
 }
 
 .popup-form label {
@@ -901,18 +920,22 @@ th {
   font-family: inherit;
   outline: none;
 }
+
 .popup-form input[type="text"]::placeholder,
 .popup-form input[type="number"]::placeholder {
   color: #bdbdbd;
   opacity: 1;
 }
+
 .popup-form .checkbox-group {
   display: flex;
   flex-direction: column;
   gap: 12px;
- margin-top: 8px;
-  margin-bottom: 6px; /* Igual aos outros inputs */
+  margin-top: 8px;
+  margin-bottom: 6px;
+  /* Igual aos outros inputs */
 }
+
 .popup-form .checkbox-group label {
   display: flex;
   align-items: center;
@@ -921,6 +944,7 @@ th {
   color: #2b5141;
   margin-bottom: 0;
 }
+
 .popup-form .checkbox-group input[type="checkbox"] {
   margin-right: 10px;
   width: 22px;
@@ -928,6 +952,7 @@ th {
   accent-color: #a4c39b;
   border-radius: 4px;
 }
+
 .popup-form textarea {
   grid-column: 1 / 4;
   width: 100%;
@@ -942,6 +967,7 @@ th {
   font-family: inherit;
   resize: vertical;
 }
+
 .popup-footer {
   display: flex;
   justify-content: flex-end;
@@ -949,12 +975,14 @@ th {
   gap: 18px;
   margin-top: 32px;
 }
+
 .popup-footer .left {
   flex: 1;
   display: flex;
   align-items: center;
   gap: 18px;
 }
+
 .popup-footer button,
 .popup-footer .tutorial-btn {
   background: #fcf6e1;
@@ -967,25 +995,30 @@ th {
   cursor: pointer;
   transition: background 0.2s;
 }
+
 .popup-footer button:hover,
 .popup-footer .tutorial-btn:hover {
   background: #a4c39b;
   color: #fff;
 }
+
 .popup-footer .cancelar-btn {
   background: #e3ecd6;
   color: #2b5141;
 }
+
 .popup-footer .cancelar-btn:hover {
   background: #a4c39b;
   color: #fff;
 }
+
 .popup-footer .obrigatorio {
   color: #2b5141;
   font-size: 1rem;
   margin-left: 18px;
   font-weight: 400;
 }
+
 .close-popup {
   position: absolute;
   top: 18px;
@@ -998,14 +1031,17 @@ th {
   font-weight: 700;
   z-index: 10;
 }
+
 @media (max-width: 900px) {
   .popup {
     min-width: 90vw;
     padding: 24px 8vw 24px 8vw;
   }
+
   .popup-form {
     grid-template-columns: 1fr;
   }
+
   .popup-form textarea {
     grid-column: 1 / 2;
   }
@@ -1016,7 +1052,7 @@ th {
 #calendar-container table.tabela-custom {
   background: #fcf6e1;
   border-radius: 12px;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
   margin: 0 auto;
   width: 100%;
   max-width: 400px;
@@ -1049,3 +1085,18 @@ th {
   font-weight: bold;
 }
 
+
+.btn-delete-msg {
+  background: transparent;
+  border: none;
+  color: #e74c3c;
+  font-size: 1.2rem;
+  margin-left: 8px;
+  cursor: pointer;
+  transition: color 0.2s;
+  padding: 0;
+}
+
+.btn-delete-msg:hover {
+  color: #c0392b;
+}

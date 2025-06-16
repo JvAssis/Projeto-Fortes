@@ -1,6 +1,14 @@
+//redirecionamento de pagina
+
 document.getElementById('sair-conta').onclick = function () {
-  window.location.href = 'home.html'; // Altere para o destino desejado
+  window.location.href = 'home.html'; 
 };
+
+
+  document.getElementById('btn-enviar-mensagem').onclick = function() {
+    window.location.href = 'mensagens.htm'; 
+  };
+
 
 // Alternar menu lateral
 const menuToggle = document.getElementById('menu-toggle');
@@ -28,7 +36,7 @@ function esconderNotificacao(botao) {
 
 //codigo do calendário
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
   const meses = [
     "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
     "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"
@@ -63,7 +71,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('corpo-calendario').innerHTML = html;
   }
 
-  document.getElementById('prev-mes').onclick = function() {
+  document.getElementById('prev-mes').onclick = function () {
     mesAtual--;
     if (mesAtual < 0) {
       mesAtual = 11;
@@ -72,7 +80,7 @@ document.addEventListener('DOMContentLoaded', function() {
     renderizarCalendario();
   };
 
-  document.getElementById('prox-mes').onclick = function() {
+  document.getElementById('prox-mes').onclick = function () {
     mesAtual++;
     if (mesAtual > 11) {
       mesAtual = 0;

@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Ribeye+Marrow&display=swap');
-*{   
+
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -21,10 +22,12 @@ body {
     text-shadow: 1px 1px 3px #000;
     text-align: center;
 }
-#home h1{
-    font-family:'Ribeye Marrow','Syne',arial;
+
+#home h1 {
+    font-family: 'Ribeye Marrow', 'Syne', arial;
     font-size: 40px;
 }
+
 .navbar {
     width: 100%;
     height: 60px;
@@ -95,7 +98,7 @@ body {
     border-radius: 10px;
     color: white;
     font-weight: bold;
-    box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s;
     display: flex;
     flex-direction: column;
@@ -148,18 +151,20 @@ body {
     padding: 20px 25px;
     text-decoration: none;
     color: #2A5140;
-    transition:  0.3s, box-shadow 0.3s;
+    transition: 0.3s, box-shadow 0.3s;
 }
 
 .barra a:hover {
     background-color: #fbf1c9c9;
-    box-shadow: inset -3px 0 10px rgba(0,0,0,0.1);
+    box-shadow: inset -3px 0 10px rgba(0, 0, 0, 0.1);
 }
-#lista{
+
+#lista {
     text-decoration: none;
     list-style-type: none;
 
 }
+
 .close-btn {
     position: absolute;
     top: 15px;
@@ -175,18 +180,21 @@ body {
     padding: 80px 20px;
     text-align: center;
 }
-.verde-section p{
-     color: #FDF7E1;
+
+.verde-section p {
+    color: #FDF7E1;
 }
 
 #propaganda {
     background-color: #FDEAD4;
     padding: 60px 20px;
-   
+
 }
-p{
-    font-family: 'syne',arial;
+
+p {
+    font-family: 'syne', arial;
 }
+
 .cards-container {
     display: flex;
     flex-wrap: wrap;
@@ -202,7 +210,7 @@ p{
     border-radius: 10px;
     color: white;
     font-weight: bold;
-    box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s;
 }
 
@@ -219,25 +227,32 @@ p{
     .menu-icon {
         display: block;
     }
-      .topo-propaganda, .baixo-propaganda {
-        
+
+    .topo-propaganda,
+    .baixo-propaganda {
+
         text-align: center;
     }
 
-    .img-esquerda, .img-direita {
-        
-    width: 40%;
-      
+    .img-esquerda,
+    .img-direita {
+
+        width: 40%;
+
     }
 
-    .texto-direita, .texto-esquerda {
+    .texto-direita,
+    .texto-esquerda {
         width: 100%;
     }
 }
-#propaganda h2{
+
+#propaganda h2 {
     color: #2A5140;
 }
-.topo-propaganda, .baixo-propaganda {
+
+.topo-propaganda,
+.baixo-propaganda {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -246,20 +261,20 @@ p{
     margin-top: 40px;
 }
 
-.img-esquerda, .img-direita {
+.img-esquerda,
+.img-direita {
     width: 40%;
     max-width: 400px;
     height: auto;
     border-radius: 10px;
 }
 
-.texto-direita, .texto-esquerda {
+.texto-direita,
+.texto-esquerda {
     flex: 1;
     font-size: 1.1em;
     color: #2A5140;
     text-align: justify;
     line-height: 1.6;
-   
+
 }
-
-

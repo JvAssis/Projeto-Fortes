@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro - EcoVida</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #f2f2f2;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .card {
+      background-color: #1c4b33;
+      padding: 2rem;
+      border-radius: 15px;
+      width: 100%;
+      max-width: 400px;
+      color: #fff;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+
+    .divider {
+      text-align: center;
+      color: #ccc;
+      font-size: 0.85rem;
+      margin: 1.2rem 0;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .row {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .row input {
+      flex: 1;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+      padding: 0.75rem;
+      border-radius: 20px;
+      border: none;
+      font-size: 0.9rem;
+    }
+
+    .info {
+      font-size: 0.7rem;
+      color: #fff;
+      margin-top: 0.3rem;
+      line-height: 1.4;
+    }
+
+    .funcoes {
+      margin-top: 0.8rem;
+    }
+
+    .funcoes p {
+      font-size: 0.85rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .funcoes label {
+      display: block;
+      margin: 0.4rem 0;
+      font-size: 0.85rem;
+    }
+
+    .funcoes input[type="radio"] {
+      margin-right: 0.5rem;
+      transform: scale(1.1);
+    }
+
+    .btn {
+      margin-top: 1rem;
+      background-color: #5bbf63;
+      color: white;
+      padding: 0.75rem;
+      border: none;
+      border-radius: 20px;
+      font-weight: bold;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #4aa852;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="card">
+    <h2>Crie uma conta</h2>
+    <form>
+      <div class="row">
+        <input type="text" placeholder="Nome" required />
+        <input type="text" placeholder="Sobrenome" required />
+      </div>
+      <input type="email" placeholder="Email" required />
+      <input type="password" placeholder="Senha" required />
+      <input type="password" placeholder="Repetir senha" required />
+
+      <p class="info">
+        Mínimo de 8 caracteres, pelo menos 1 letra maiúscula, 1 minúscula, um número, 1 caractere especial (como !, @,
+        #, $, %, etc).
+      </p>
+
+      <div class="funcoes">
+        <p>Selecione a opção correspondente ao seu trabalho:</p>
+        <label><input type="radio" name="funcao" required /> Gerador de Resíduos</label>
+        <label><input type="radio" name="funcao" /> Reciclador</label>
+        <label><input type="radio" name="funcao" /> Coletor & Reciclador</label>
+        <label><input type="radio" name="funcao" /> Coletor</label>
+      </div>
+
+      <button class="btn" type="submit">Cadastrar</button>
+    </form>
+  </div>
+</body>
+
+</html>

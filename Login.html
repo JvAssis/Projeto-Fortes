@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login e Cadastro</title>
+    <link rel="stylesheet" href="Untitled-1.css">
+</head>
+
+<body>
+
+    <div class="container" id="login-form">
+        <div class="divider">
+            <h2>Login</h2>
+        </div>
+        <form>
+            <div class="form-group">
+                <label for="email">E-mail</label>
+                <input type="email" id="email" placeholder="Digite seu e-mail" required>
+            </div>
+            <div class="form-group">
+                <label for="senha">Senha</label>
+                <input type="password" id="senha" placeholder="Digite sua senha" required>
+            </div>
+
+            <button class="btn" type="submit">Entrar</button>
+            <div class="toggle">
+                <p> <a href="#" onclick="showRegister()">Esqueceu sua senha?</a></p>
+            </div>
+        </form>
+    </div>
+
+    </a>
+
+    <div class="container" id="register-form" style="display: none;">
+
+        <script>
+            document.querySelector("#login-form form").addEventListener("submit", function (e) {
+                e.preventDefault();
+                const email = document.getElementById("email").value.trim();
+                const senha = document.getElementById("senha").value;
+
+                // Edite os emails e senhas abaixo conforme desejar
+                const validLogins = [
+                    { email: "admin@fortes.com.br", senha: "123456" },
+                    { email: "cooperativas@fortes.com.br", senha: "123456" }
+                ];
+
+                const isValid = validLogins.some(user => user.email === email && user.senha === senha);
+
+                if (isValid) {
+                    window.location.href = "dashboard.html";
+                } else {
+                    alert("Usuário ou senha incorretos.");
+                }
+            });
+        </script>
+
+</body>
+
+</html>
