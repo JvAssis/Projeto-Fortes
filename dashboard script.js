@@ -9,6 +9,20 @@ document.getElementById('sair-conta').onclick = function () {
     window.location.href = 'mensagens.htm'; 
   };
 
+  document.addEventListener('DOMContentLoaded', function () {
+  const botoes = document.querySelectorAll('.botao-calendario button');
+  if (botoes.length >= 2) {
+    // Primeiro botão: Ver eventos
+    botoes[0].addEventListener('click', function () {
+      window.location.href = 'entregas.html'; // ajuste o nome da página se necessário
+    });
+    // Segundo botão: Cadastrar resíduos
+    botoes[1].addEventListener('click', function () {
+      window.location.href = 'cadastrar residuos.html';
+    });
+  }
+});
+
 
 // Alternar menu lateral
 const menuToggle = document.getElementById('menu-toggle');
