@@ -1,3 +1,26 @@
+document.getElementById('sair-conta').onclick = function () {
+  window.location.href = 'home.html'; // Altere para o destino desejado
+};
+const btn = document.getElementById('btn-expandir-mapa');
+const iframe = document.getElementById('mapa-integrado');
+let expandido = false;
+const larguraOriginal = '600px';
+const alturaOriginal = '450px';
+
+btn.addEventListener('click', function () {
+  expandido = !expandido;
+  if (expandido) {
+    iframe.style.width = '100%';
+    iframe.style.height = '600px';
+    btn.textContent = 'Diminuir Mapa';
+  } else {
+    iframe.style.width = larguraOriginal;
+    iframe.style.height = alturaOriginal;
+    btn.textContent = 'Expandir Mapa';
+  }
+});
+
+
 const eventos = [
   {
     nome: "Evento X",
@@ -28,8 +51,8 @@ const eventos = [
   }
 ];
 
-// Mantém a ordem dos eventos ao ordenar, para que o botão "Entregue" corresponda ao evento correto
 let ordemAtual = eventos.map((_, idx) => idx);
+let idxParaEntregar = null;
 
 function renderTabela(lista, ordem) {
   const corpo = document.getElementById('corpo-tabela');
@@ -52,13 +75,13 @@ function renderTabela(lista, ordem) {
           </span>
         </td>
         <td>
-          ${!ev.entregue ? `<button class="botao-entregue" onclick="marcarEntregue(${ordem[i]})">Marcar como Entregue</button>` : ''}
+          ${!ev.entregue ? `<button class="botao-entregue" onclick="abrirPopup(${ordem[i]})">Marcar como Entregue</button>` : ''}
         </td>
       </tr>
     `;
   });
   // Preenche linhas vazias para manter o layout
-  for(let i = lista.length; i < 5; i++) {
+  for (let i = lista.length; i < 5; i++) {
     corpo.innerHTML += `
       <tr>
         <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
@@ -75,8 +98,7 @@ function formatarData(data) {
 function filtrarTabela() {
   const filtroOrdem = document.getElementById('filtro-ordem').value;
 
-  // Cria uma cópia dos eventos e da ordem original
-  let filtrados = eventos.map((ev, idx) => ({...ev, _idx: idx}));
+  let filtrados = eventos.map((ev, idx) => ({ ...ev, _idx: idx }));
 
   if (filtroOrdem === 'data') {
     filtrados.sort((a, b) => a.data.localeCompare(b.data));
@@ -86,7 +108,6 @@ function filtrarTabela() {
     filtrados.sort((a, b) => a.tipo.localeCompare(b.tipo));
   }
 
-  // Atualiza a ordem atual para manter o índice correto ao marcar como entregue
   ordemAtual = filtrados.map(ev => ev._idx);
 
   renderTabela(filtrados, ordemAtual);
@@ -99,10 +120,27 @@ function feedbackRastrear(btn) {
   }, 400);
 }
 
-function marcarEntregue(idx) {
-  eventos[idx].entregue = true;
-  filtrarTabela();
+function abrirPopup(idx) {
+  idxParaEntregar = idx;
+  document.getElementById('popup-confirmacao').style.display = 'flex';
 }
+
+function fecharPopup() {
+  idxParaEntregar = null;
+  document.getElementById('popup-confirmacao').style.display = 'none';
+}
+
+document.getElementById('popup-sim').onclick = function () {
+  if (idxParaEntregar !== null) {
+    eventos[idxParaEntregar].entregue = true;
+    fecharPopup();
+    filtrarTabela();
+  }
+};
+
+document.getElementById('popup-nao').onclick = function () {
+  fecharPopup();
+};
 
 // Inicializa tabela
 filtrarTabela();

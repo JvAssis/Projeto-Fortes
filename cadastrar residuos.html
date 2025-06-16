@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Resíduos </title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="pi.css" />
+</head>
+
+<body>
+  <div class="d-flex">
+    <!-- Sidebar -->
+    <div class="sidebar d-flex flex-column p-3">
+      <button id="menu-toggle" class="menu-toggle">
+        <i class="bi bi-list"></i>
+      </button>
+      <a href="dashboard.html" class="nav-link"><i class="bi bi-house-door me-2"></i> <span
+          class="label">Menu</span></a>
+      <a href="entregas.html" class="nav-link"><i class="bi bi-truck me-2"></i> <span class="label">Entregas</span></a>
+      <a href="cadastrar residuos.html" class="nav-link"><i class="bi bi-recycle me-2"></i> <span class="label">Residuos</span></a>
+      <a href="index.html" class="nav-link"><i class="bi bi-file-earmark-text me-2"></i> <span
+          class="label">Relatórios</span></a>
+      <a href="#" class="nav-link"><i class="bi bi-envelope me-2"></i> <span class="label">Mensagens</span></a>
+      <a href="#" class="nav-link"><i class="bi bi-question-circle me-2"></i> <span class="label">Ajuda</span></a>
+    </div>
+
+    <!-- inicio Conteúdo principal -->
+    <div class="flex-grow-1 p-4">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="titulo">Resíduos</h1>
+        <div>
+          <span>Usuário</span>
+          <button class="btn btn-outline-secondary btn-sm">Sair</button>
+        </div>
+      </div>
+
+      <!-- bloco de conteudo -->
+      <div class="tabela-container">
+        <button class="btn-cadastrar" id="btn-cadastrar">Cadastrar Resíduo</button>
+        <table class="tabela-custom">
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>Data Coletado</th>
+              <th>Peso</th>
+              <th>Ponto De Coleta</th>
+              <th>Tipo</th>
+              <th>Previsão De Entrega</th>
+              <th>Observações</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody id="residuos-tbody">
+            <tr>
+              <td>Evento X</td>
+              <td>16/6/2025</td>
+              <td>12kg</td>
+              <td>Ponto x</td>
+              <td>Papel</td>
+              <td>20/6/2025</td>
+              <td>Exemplo de observação</td>
+              <td>
+                <button class="excluir-btn" type="button">Excluir</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <button class="ver-mais-btn" id="btn-cronograma">Exibir Cronograma</button>
+      </div>
+
+      <!-- Popup -->
+      <div class="popup-bg" id="popup-bg">
+        <div class="popup">
+          <button class="close-popup" id="close-popup">&times;</button>
+          <form id="form-residuo" autocomplete="off">
+            <div class="popup-form">
+              <div>
+                <label for="nome-evento">Nome do Evento*</label>
+                <input type="text" id="nome-evento" name="nome-evento" placeholder="Evento X" required>
+              </div>
+              <div>
+                <label for="ponto-coleta">Ponto de Coleta*</label>
+                <input type="text" id="ponto-coleta" name="ponto-coleta" placeholder="Rua 13, Vila Velha, ES" required>
+              </div>
+              <div>
+                <label for="peso">Peso in KG</label>
+                <input type="number" id="peso" name="peso" placeholder="Digite apenas números" min="0" step="any">
+              </div>
+              <div>
+                <label for="data-coleta">Data da coleta*</label>
+                <input type="date" id="data-coleta" name="data-coleta" required>
+              </div>
+
+              <div>
+                <label for="previsao-entrega">Previsão De Entrega</label>
+                <input type="date" id="previsao-entrega" name="previsao-entrega">
+              </div>
+
+              <div>
+                <label>Tipo de resíduo*</label>
+                <div class="checkbox-group">
+                  <label><input type="checkbox" name="tipo" value="Papel"> Papel</label>
+                  <label><input type="checkbox" name="tipo" value="Metal"> Metal</label>
+                  <label><input type="checkbox" name="tipo" value="Comida"> Comida</label>
+                  <label><input type="checkbox" name="tipo" value="Plástico"> Plástico</label>
+                </div>
+              </div>
+
+              <textarea id="observacoes" name="observacoes" placeholder="Observações:"></textarea>
+            </div>
+            <div class="popup-footer">
+              <div class="left">
+                <button type="button" class="btn-padrao tutorial-btn">Ver Tutorial De Reciclagem Correta</button>
+                <span class="obrigatorio">Campos com * são obrigatórios</span>
+              </div>
+              <button type="button" class="btn-padrao cancelar-btn" id="cancelar-popup">Cancelar</button>
+              <button type="submit" class="btn-padrao concluir-btn">Concluir</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Popup de confirmação de exclusão -->
+      <div class="popup-bg" id="popup-excluir-bg">
+        <div class="popup" style="max-width:400px;min-width:300px;text-align:center;">
+          <button class="close-popup" id="close-popup-excluir">&times;</button>
+          <h4>Confirmar Exclusão</h4>
+          <p>Tem certeza que deseja excluir este resíduo?</p>
+          <div style="display:flex;justify-content:center;gap:16px;margin-top:24px;">
+            <button type="button" class="btn-cadastrar" id="cancelar-excluir">Cancelar</button>
+            <button type="button" class="ver-mais-btn" id="confirmar-excluir">Excluir</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Popup Cronograma -->
+      <div class="popup-bg" id="popup-cronograma-bg">
+        <div class="popup" style="max-width:500px;min-width:320px;text-align:center;">
+          <button class="close-popup" id="close-popup-cronograma" style="position:absolute;top:18px;right:24px;">&times;</button>
+          <h4 style="margin-top:32px;margin-bottom:8px;">Cronograma de Eventos</h4>
+          <div id="calendar-container"></div>
+        </div>
+      </div>
+      <!-- Scripts -->
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+      <script src="cadastrar residuos.js"></script>
+</body>
+
+</html>

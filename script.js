@@ -1,3 +1,6 @@
+document.getElementById('sair-conta').onclick = function () {
+  window.location.href = 'home.html'; // Altere para o destino desejado
+};
 // Alternar menu lateral
 const menuToggle = document.getElementById('menu-toggle');
 const sidebar = document.querySelector('.sidebar');

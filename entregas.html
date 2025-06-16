@@ -2,117 +2,138 @@
 <html lang="pt-BR">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Entregas</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Entregas</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="pi.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="pi.css" />
 </head>
 
 <body>
-    <div class="d-flex">
-        <!-- Sidebar -->
-        <div class="sidebar d-flex flex-column p-3">
-            <button id="menu-toggle" class="menu-toggle">
-                <i class="bi bi-list"></i>
-            </button>
-            <a href="dashboard.html" class="nav-link"><i class="bi bi-house-door me-2"></i> <span
-                    class="label">Menu</span></a>
-            <a href="entregas.html" class="nav-link"><i class="bi bi-truck me-2"></i> <span
-                    class="label">Entregas</span></a>
-            <a href="#" class="nav-link"><i class="bi bi-send me-2"></i> <span class="label">Pontos de coleta</span></a>
-            <a href="#" class="nav-link"><i class="bi bi-recycle me-2"></i> <span class="label">Residuos</span></a>
-            <a href="index.html" class="nav-link"><i class="bi bi-file-earmark-text me-2"></i> <span
-                    class="label">Relatórios</span></a>
-            <a href="#" class="nav-link"><i class="bi bi-envelope me-2"></i> <span class="label">Mensagens</span></a>
-            <a href="#" class="nav-link"><i class="bi bi-question-circle me-2"></i> <span class="label">Ajuda</span></a>
+  <div class="d-flex">
+    <!-- Sidebar -->
+    <div class="sidebar d-flex flex-column p-3">
+      <button id="menu-toggle" class="menu-toggle">
+        <i class="bi bi-list"></i>
+      </button>
+      <a href="dashboard.html" class="nav-link"><i class="bi bi-house-door me-2"></i> <span
+          class="label">Menu</span></a>
+      <a href="entregas.html" class="nav-link"><i class="bi bi-truck me-2"></i> <span class="label">Entregas</span></a>
+      <a href="cadastrar residuos.html" class="nav-link"><i class="bi bi-recycle me-2"></i> <span class="label">Residuos</span></a>
+      <a href="index.html" class="nav-link"><i class="bi bi-file-earmark-text me-2"></i> <span
+          class="label">Relatórios</span></a>
+      <a href="#" class="nav-link"><i class="bi bi-envelope me-2"></i> <span class="label">Mensagens</span></a>
+      <a href="#" class="nav-link"><i class="bi bi-question-circle me-2"></i> <span class="label">Ajuda</span></a>
+    </div>
+
+    <!-- inicio Conteúdo principal -->
+    <div class="flex-grow-1 p-4">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="titulo">Entregas</h1>
+        <div>
+          <span>Usuário</span>
+          <button id="sair-conta" class="btn btn-outline-secondary btn-sm">Sair</button>
+        </div>
+      </div>
+
+      <!-- cabeçalho do filtro-->
+      <div class="cabecalho-filtro mb-3">
+
+        <label for="filtro" style="font-size:1.25rem; font-weight:500; margin-right:8px;">Filtrar por:</label>
+        <select id="filtro" class="dropdown-filtro">
+          <option>Data prevista</option>
+          <option>Status</option>
+          <option>Categoria</option>
+          <option>Responsável</option>
+        </select>
+
+        <div class="botoes-cabecalho-filtro mb-4">
+          <button class="botao-cabecalho" onclick="window.location.href=''">Filtrar</button>
+          <button class="botao-cabecalho" onclick="window.location.href=''">Limpar Filtro</button>
+          <button id="read-all" class="botao-cabecalho" onclick="window.location.href=''">Marcar item como
+            recebido</button>
+        </div>
+      </div>
+
+      <!-- bloco de conteudo -->
+      <div class="container-rastreamento mb-3">
+        <div class="barra-status">
+          <h5>Disponivel para coleta</h5>
+          <h5>Lixo coletado</h5>
+          <h5 id="afastar-entrega">Entrega</h5>
+        </div>
+        <div class="container-progresso">
+          <div class="barra-progresso">
+            <div class="preenchimento-progresso"></div>
+            <span class="ponto-progresso inicio"></span>
+            <span class="ponto-progresso meio"></span>
+            <span class="ponto-progresso fim"></span>
+          </div>
         </div>
 
-        <!-- inicio Conteúdo principal -->
-        <div class="flex-grow-1 p-4">
-            <div class="d-flex justify-content-between align-items-center mb-4">
-                <h1 class="titulo">Entregas</h1>
-                <div>
-                    <span>Usuário</span>
-                    <button class="btn btn-outline-secondary btn-sm">Sair</button>
-                </div>
-            </div>
 
-            <!-- cabeçalho do filtro-->
-            <div class="cabecalho-filtro mb-3">
-
-                <label for="filtro" style="font-size:1.25rem; font-weight:500; margin-right:8px;">Filtrar por:</label>
-                <select id="filtro" class="dropdown-filtro">
-                    <option>Data prevista</option>
-                    <option>Status</option>
-                    <option>Categoria</option>
-                    <option>Responsável</option>
-                </select>
-
-                <div class="botoes-cabecalho-filtro mb-4">
-                    <button class="botao-cabecalho" onclick="window.location.href=''">Filtrar</button>
-                    <button class="botao-cabecalho" onclick="window.location.href=''">Limpar Filtro</button>
-                    <button id="read-all" class="botao-cabecalho" onclick="window.location.href=''">Marcar item como
-                        recebido</button>
-                </div>
-            </div>
-
-            <!-- bloco de conteudo -->
-            <div class="container-rastreamento mb-3">
-                <div class="barra-status">
-                    <h5>Disponivel para coleta</h5>
-                    <h5>Lixo coletado</h5>
-                    <h5 id="afastar-entrega">Entrega</h5>
-                </div>
-                <div class="container-progresso">
-                    <div class="barra-progresso">
-                        <div class="preenchimento-progresso"></div>
-                        <span class="ponto-progresso inicio"></span>
-                        <span class="ponto-progresso meio"></span>
-                        <span class="ponto-progresso fim"></span>
-                    </div>
-                </div>
+        <div class="mapa-wrapper">
+          <iframe id="mapa-integrado"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14964.857228375473!2d-40.30166471118414!3d-20.332763527558953!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xb83dc6a182eea7%3A0x2e2d9579be99a320!2sCentro%20de%20Vila%20Velha%2C%20Vila%20Velha%20-%20ES!5e0!3m2!1spt-BR!2sbr!4v1749984313236!5m2!1spt-BR!2sbr"
+            width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <button id="btn-expandir-mapa">Expandir Mapa</button>
+        </div>
 
 
-                <iframe id="mapa-integrado"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14964.857228375473!2d-40.30166471118414!3d-20.332763527558953!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xb83dc6a182eea7%3A0x2e2d9579be99a320!2sCentro%20de%20Vila%20Velha%2C%20Vila%20Velha%20-%20ES!5e0!3m2!1spt-BR!2sbr!4v1749984313236!5m2!1spt-BR!2sbr"
-                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
+        <!-- Tabela estilizada -->
+        <div class="tabela-container">
+          <div class="filtro-container">
+            <label for="filtro-ordem">Ordenar por:</label>
+            <select id="filtro-ordem" onchange="filtrarTabela()">
+              <option value="data">Data</option>
+              <option value="peso">Peso</option>
+              <option value="tipo">Tipo</option>
+            </select>
+          </div>
+          <table class="tabela-custom" id="tabela-eventos">
+            <thead>
+              <tr>
+                <th>Rastrear</th>
+                <th>Nome</th>
+                <th>Data Coletado</th>
+                <th>Peso</th>
+                <th>Ponto De Coleta</th>
+                <th>Tipo</th>
+                <th>Previsão De Entrega</th>
+                <th>Status de Entrega</th>
+                <th>Marcar como Entregue</th>
+              </tr>
+            </thead>
+            <tbody id="corpo-tabela">
+              <!-- Conteúdo gerado por JS -->
+            </tbody>
+          </table>
+        </div>
 
-            <!-- Tabela estilizada -->
-<div class="tabela-container">
-  <div class="filtro-container">
-    <label for="filtro-ordem">Ordenar por:</label>
-    <select id="filtro-ordem" onchange="filtrarTabela()">
-      <option value="data">Data</option>
-      <option value="peso">Peso</option>
-      <option value="tipo">Tipo</option>
-    </select>
-  </div>
-  <table class="tabela-custom" id="tabela-eventos">
-    <thead>
-      <tr>
-        <th>Rastrear</th>
-        <th>Nome</th>
-        <th>Data Coletado</th>
-        <th>Peso</th>
-        <th>Ponto De Coleta</th>
-        <th>Tipo</th>
-        <th>Previsão De Entrega</th>
-        <th>Status de Entrega</th>
-        <th>Marcar como Entregue</th>
-      </tr>
-    </thead>
-    <tbody id="corpo-tabela">
-    </tbody>
-  </table>
-</div>
-            <!-- Scripts -->
-            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-            <script src="entregas.js"></script>
+        <!-- Pop-up de confirmação -->
+        <div id="popup-confirmacao"
+          style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.3); z-index:999; align-items:center; justify-content:center;">
+          <div
+            style="background:#fff; padding:32px 24px; border-radius:12px; box-shadow:0 2px 16px rgba(0,0,0,0.15); text-align:center; min-width:260px;">
+            <p
+              style="font-family: 'Montserrat', Arial, sans-serif; font-size:1.1rem; color:#2b5141; margin-bottom:24px;">
+              Tem certeza que deseja marcar como entregue?</p>
+            <button id="popup-sim"
+              style="margin-right:16px; background:#70a988; color:#fff; border:none; border-radius:8px; padding:8px 24px; font-size:1rem; cursor:pointer;">Sim</button>
+            <button id="popup-nao"
+              style="background:#fcf6e1; color:#2b5141; border:none; border-radius:8px; padding:8px 24px; font-size:1rem; cursor:pointer;">Não</button>
+          </div>
+        </div>
+
+
+
+
+        <!-- Scripts -->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="entregas.js"></script>
 </body>
 
 </html>
