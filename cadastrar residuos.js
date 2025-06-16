@@ -1,115 +1,122 @@
-document.getElementById('sair-conta').onclick = function () {
-  window.location.href = 'home.html'; // Altere para o destino desejado
-};
-
 document.addEventListener('DOMContentLoaded', function () {
-  // Corrija o id do botão "Sair" no HTML para sair-conta
+  // Botão sair
   const sairBtn = document.getElementById('sair-conta');
   if (sairBtn) {
-    sairBtn.onclick = function () {
+    sairBtn.onclick = function() {
       window.location.href = 'home.html';
     };
   }
 
-  console.log('Arquivo JS correto carregado!');
+  // --- POPUP DE CADASTRO ---
+  const btnCadastrar = document.getElementById('btn-cadastrar');
+  const popupBg = document.getElementById('popup-bg');
+  const closePopup = document.getElementById('close-popup');
+  const cancelarPopup = document.getElementById('cancelar-popup');
+  if (btnCadastrar && popupBg) {
+    btnCadastrar.onclick = function () {
+      popupBg.classList.add('active');
+    };
+  }
+  if (closePopup && popupBg) {
+    closePopup.onclick = function () {
+      popupBg.classList.remove('active');
+    };
+  }
+  if (cancelarPopup && popupBg) {
+    cancelarPopup.onclick = function () {
+      popupBg.classList.remove('active');
+    };
+  }
 
-  // Excluir resíduo
+  // --- EXCLUIR RESÍDUO ---
   let trParaExcluir = null;
+  const popupExcluirBg = document.getElementById('popup-excluir-bg');
+  const closePopupExcluir = document.getElementById('close-popup-excluir');
+  const cancelarExcluir = document.getElementById('cancelar-excluir');
+  const confirmarExcluir = document.getElementById('confirmar-excluir');
 
-  // Delegação para botões de excluir (inclusive os adicionados dinamicamente)
+  // Delegação para botões de excluir
   document.addEventListener('click', function (e) {
     if (e.target.classList.contains('excluir-btn')) {
       trParaExcluir = e.target.closest('tr');
-      document.getElementById('popup-excluir-bg').classList.add('active');
+      if (popupExcluirBg) popupExcluirBg.classList.add('active');
     }
   });
 
-  // Fechar popup de exclusão
-  document.getElementById('close-popup-excluir').onclick = function () {
-    document.getElementById('popup-excluir-bg').classList.remove('active');
-    trParaExcluir = null;
-  };
-  document.getElementById('cancelar-excluir').onclick = function () {
-    document.getElementById('popup-excluir-bg').classList.remove('active');
-    trParaExcluir = null;
-  };
-
-  // Confirmar exclusão
-  document.getElementById('confirmar-excluir').onclick = function () {
-    if (trParaExcluir) {
-      trParaExcluir.remove();
+  if (closePopupExcluir && popupExcluirBg) {
+    closePopupExcluir.onclick = function () {
+      popupExcluirBg.classList.remove('active');
       trParaExcluir = null;
-    }
-    document.getElementById('popup-excluir-bg').classList.remove('active');
-  };
-
-  // Adiciona botão de excluir nas novas linhas criadas pelo cadastro
-  document.getElementById('form-residuo').addEventListener('submit', function () {
-    setTimeout(function () {
-      const linhas = document.querySelectorAll('#residuos-tbody tr');
-      const ultima = linhas[linhas.length - 1];
-      if (ultima && !ultima.querySelector('.excluir-btn')) {
-        const td = document.createElement('td');
-        td.innerHTML = '<button class="excluir-btn" type="button">Excluir</button>';
-        ultima.appendChild(td);
+    };
+  }
+  if (cancelarExcluir && popupExcluirBg) {
+    cancelarExcluir.onclick = function () {
+      popupExcluirBg.classList.remove('active');
+      trParaExcluir = null;
+    };
+  }
+  if (confirmarExcluir && popupExcluirBg) {
+    confirmarExcluir.onclick = function () {
+      if (trParaExcluir) {
+        trParaExcluir.remove();
+        trParaExcluir = null;
       }
-    }, 10);
-  });
+      popupExcluirBg.classList.remove('active');
+    };
+  }
 
-  // Popup de cadastro
-  document.getElementById('btn-cadastrar').onclick = function () {
-    document.getElementById('popup-bg').classList.add('active');
-  };
-  document.getElementById('close-popup').onclick = function () {
-    document.getElementById('popup-bg').classList.remove('active');
-  };
-  document.getElementById('cancelar-popup').onclick = function () {
-    document.getElementById('popup-bg').classList.remove('active');
-  };
+  // --- FORMULÁRIO DE CADASTRO ---
+  const formResiduo = document.getElementById('form-residuo');
+  const residuosTbody = document.getElementById('residuos-tbody');
+  if (formResiduo && residuosTbody) {
+    formResiduo.onsubmit = function (e) {
+      e.preventDefault();
+      // Pega os valores
+      const nome = document.getElementById('nome-evento').value;
+      const dataColeta = document.getElementById('data-coleta').value
+        ? document.getElementById('data-coleta').value.split('-').reverse().join('/')
+        : '';
+      const peso = document.getElementById('peso').value ? document.getElementById('peso').value + 'kg' : '';
+      const ponto = document.getElementById('ponto-coleta').value;
+      const tipos = Array.from(document.querySelectorAll('input[name="tipo"]:checked')).map(cb => cb.value).join(', ');
+      const previsao = document.getElementById('previsao-entrega').value
+        ? document.getElementById('previsao-entrega').value.split('-').reverse().join('/')
+        : '';
+      const observacoes = document.getElementById('observacoes').value;
 
-  // Submeter formulário de resíduo
-  document.getElementById('form-residuo').onsubmit = function (e) {
-    e.preventDefault();
-    // Pega os valores
-    const nome = document.getElementById('nome-evento').value;
-    const dataColeta = document.getElementById('data-coleta').value
-      ? document.getElementById('data-coleta').value.split('-').reverse().join('/')
-      : '';
-    const peso = document.getElementById('peso').value ? document.getElementById('peso').value + 'kg' : '';
-    const ponto = document.getElementById('ponto-coleta').value;
-    const tipos = Array.from(document.querySelectorAll('input[name="tipo"]:checked')).map(cb => cb.value).join(', ');
-    const previsao = document.getElementById('previsao-entrega').value
-      ? document.getElementById('previsao-entrega').value.split('-').reverse().join('/')
-      : '';
-    const observacoes = document.getElementById('observacoes').value;
+      // Adiciona na tabela
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td>${nome}</td>
+        <td>${dataColeta}</td>
+        <td>${peso}</td>
+        <td>${ponto}</td>
+        <td>${tipos}</td>
+        <td>${previsao}</td>
+        <td>${observacoes}</td>
+        <td><button class="excluir-btn" type="button">Excluir</button></td>
+      `;
+      residuosTbody.appendChild(tr);
 
-    // Adiciona na tabela
-    const tbody = document.getElementById('residuos-tbody');
-    const tr = document.createElement('tr');
-    tr.innerHTML = `
-      <td>${nome}</td>
-      <td>${dataColeta}</td>
-      <td>${peso}</td>
-      <td>${ponto}</td>
-      <td>${tipos}</td>
-      <td>${previsao}</td>
-      <td>${observacoes}</td>
-      <td><button class="excluir-btn" type="button">Excluir</button></td>
-    `;
-    tbody.appendChild(tr);
-    // Fecha popup e reseta form
-    document.getElementById('popup-bg').classList.remove('active');
-    document.getElementById('form-residuo').reset();
-  };
+      // Fecha popup e reseta form
+      popupBg.classList.remove('active');
+      formResiduo.reset();
+
+      // Atualiza calendário se estiver aberto
+      setTimeout(function () {
+        if (document.getElementById('popup-cronograma-bg')?.classList.contains('active')) {
+          const eventDates = getEventDates();
+          renderCalendar(eventDates);
+        }
+      }, 20);
+    };
+  }
 
   // --- CRONOGRAMA POPUP E CALENDÁRIO ---
-
-  // Função para obter as datas dos eventos da tabela
   function getEventDates() {
     const trs = document.querySelectorAll('#residuos-tbody tr');
     const dates = [];
     trs.forEach(tr => {
-      // Data Coletado está na segunda coluna (td[1])
       const tds = tr.querySelectorAll('td');
       if (tds.length > 1) {
         const data = tds[1].textContent.trim();
@@ -119,13 +126,11 @@ document.addEventListener('DOMContentLoaded', function () {
     return dates;
   }
 
-  // Função para criar o calendário
   function renderCalendar(eventDates) {
-    // eventDates: array de datas no formato dd/mm/aaaa
     const container = document.getElementById('calendar-container');
+    if (!container) return;
     container.innerHTML = '';
 
-    // Pega o mês/ano do primeiro evento ou do mês atual
     let refDate = new Date();
     if (eventDates.length > 0) {
       const [d, m, y] = eventDates[0].split('/');
@@ -134,7 +139,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const year = refDate.getFullYear();
     const month = refDate.getMonth();
 
-    // Cabeçalho do calendário
     const monthNames = [
       'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
       'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
@@ -155,7 +159,6 @@ document.addEventListener('DOMContentLoaded', function () {
     trHead.appendChild(th);
     thead.appendChild(trHead);
 
-    // Dias da semana
     const trDias = document.createElement('tr');
     ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'].forEach(dia => {
       const thDia = document.createElement('th');
@@ -166,25 +169,21 @@ document.addEventListener('DOMContentLoaded', function () {
     thead.appendChild(trDias);
     table.appendChild(thead);
 
-    // Corpo do calendário
     const tbody = document.createElement('tbody');
     const firstDay = new Date(year, month, 1).getDay();
     const daysInMonth = new Date(year, month + 1, 0).getDate();
 
     let tr = document.createElement('tr');
-    // Espaços em branco antes do primeiro dia
     for (let i = 0; i < firstDay; i++) {
       tr.appendChild(document.createElement('td'));
     }
 
-    // Prepara datas para highlight
     const eventSet = new Set(eventDates);
 
     for (let day = 1; day <= daysInMonth; day++) {
       const td = document.createElement('td');
       td.textContent = day;
 
-      // Formata a data para comparar
       const diaStr = day.toString().padStart(2, '0');
       const mesStr = (month + 1).toString().padStart(2, '0');
       const dataStr = `${diaStr}/${mesStr}/${year}`;
@@ -206,46 +205,23 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     }
     table.appendChild(tbody);
-
     container.appendChild(table);
   }
 
   // Abrir popup do cronograma
-  document.getElementById('btn-cronograma').onclick = function () {
-    const eventDates = getEventDates();
-    renderCalendar(eventDates);
-    document.getElementById('popup-cronograma-bg').classList.add('active');
-  };
-
-  // Fechar popup do cronograma
-  document.getElementById('close-popup-cronograma').onclick = function () {
-    document.getElementById('popup-cronograma-bg').classList.remove('active');
-  };
-
-  // Atualiza o calendário ao adicionar novo evento
-  document.getElementById('form-residuo').addEventListener('submit', function () {
-    setTimeout(function () {
-      if (document.getElementById('popup-cronograma-bg').classList.contains('active')) {
-        const eventDates = getEventDates();
-        renderCalendar(eventDates);
-      }
-    }, 20);
-  });
-
-  // Se quiser adicionar uma linha automaticamente ao carregar a página, descomente abaixo:
-  /*
-  const tbody = document.getElementById('residuos-tbody');
-  const tr = document.createElement('tr');
-  tr.innerHTML = `
-    <td>Evento y</td>
-    <td>12/06/2025</td>
-    <td>80kg</td>
-    <td>Vila Velha</td>
-    <td>Papel</td>
-    <td>18/06/2025</td>
-    <td>1234</td>
-    <td><button class="excluir-btn" type="button">Excluir</button></td>
-  `;
-  tbody.appendChild(tr);
-  */
+  const btnCronograma = document.getElementById('btn-cronograma');
+  const popupCronogramaBg = document.getElementById('popup-cronograma-bg');
+  const closePopupCronograma = document.getElementById('close-popup-cronograma');
+  if (btnCronograma && popupCronogramaBg) {
+    btnCronograma.onclick = function () {
+      const eventDates = getEventDates();
+      renderCalendar(eventDates);
+      popupCronogramaBg.classList.add('active');
+    };
+  }
+  if (closePopupCronograma && popupCronogramaBg) {
+    closePopupCronograma.onclick = function () {
+      popupCronogramaBg.classList.remove('active');
+    };
+  }
 });

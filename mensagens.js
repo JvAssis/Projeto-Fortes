@@ -1,6 +1,3 @@
-document.getElementById('sair-conta').onclick = function () {
-  window.location.href = 'home.html'; // Altere para o destino desejado
-};
 
 document.addEventListener('DOMContentLoaded', function () {
   // Abrir popup de mensagem
@@ -8,6 +5,8 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('popup-bg').classList.add('active');
   };
 
+
+  
   // Fechar popup de mensagem
   document.getElementById('close-popup').onclick = function () {
     document.getElementById('popup-bg').classList.remove('active');
@@ -66,3 +65,4 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 });
+
